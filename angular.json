@@ -57,6 +57,7 @@
           "options": {
             "configDir": "projects/storybook/.storybook",
             "browserTarget": "storybook:build",
+            "styles": ["projects/storybook/src/styles.css"],
             "compodoc": true,
             "compodocArgs": [
               "-e",

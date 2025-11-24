@@ -1,48 +1,40 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 
 @Component({
   selector: 'storybook-button',
   standalone: true,
   imports: [CommonModule],
-  template: ` <button
+  template: `<button
   type="button"
-  (click)="onClick.emit($event)"
   class="bg-blue-600 hover:bg-blue-900 text-white px-4 py-2 rounded-md"
-  [ngClass]="classes"
-  [ngStyle]="{ 'background-color': backgroundColor }"
+  [ngClass]="classes()"
 >
-  {{ label }}
+  {{ label() }}
 </button>`,
 })
 export class ButtonComponent {
-  /** Is this the principal call to action on the page? */
-  @Input()
-  primary = false;
+  label = input<string | undefined>()
+  color = input<ButtonColor>('blue')
+  size = input.required<ButtonSize>()
 
-  /** What background color to use */
-  @Input()
-  backgroundColor?: string;
+  classes = computed(() => {
 
-  /** How large should the button be? */
-  @Input()
-  size: 'small' | 'medium' | 'large' = 'medium';
+    const colorClass: Record<ButtonColor, string> = {
+      'blue': '',
+      'red': '',
+      'neutral': ''
+    }
 
-  /**
-   * Button contents
-   *
-   * @required
-   */
-  @Input()
-  label = 'Button';
+    const sizeClass = computed(() => ({
+      sm: 'text-xs px-2 py-1',
+      md: 'text-base px-4 py-2',
+      lg: 'text-lg px-6 py-3',
+    } satisfies Record<ButtonSize, string>)[this.size()]);
 
-  /** Optional click handler */
-  @Output()
-  onClick = new EventEmitter<Event>();
-
-  public get classes(): string[] {
-    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';
-
-    return ['storybook-button', `storybook-button--${this.size}`, mode];
-  }
+    return `${colorClass} ${sizeClass}`
+  })
 }
+
+export type ButtonColor = 'blue' | 'red' | 'neutral'
+export type ButtonSize = 'sm' | 'md' | 'lg'
