@@ -3,29 +3,29 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "components": {
+    "storybook": {
       "projectType": "application",
       "schematics": {},
-      "root": "projects/components",
-      "sourceRoot": "projects/components/src",
+      "root": "projects/storybook",
+      "sourceRoot": "projects/storybook/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "browser": "projects/components/src/main.ts",
+            "browser": "projects/storybook/src/main.ts",
             "polyfills": [
               "zone.js"
             ],
-            "tsConfig": "projects/components/tsconfig.app.json",
+            "tsConfig": "projects/storybook/tsconfig.app.json",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/components/public"
+                "input": "projects/storybook/public"
               }
             ],
             "styles": [
-              "projects/components/src/styles.css"
+              "projects/storybook/src/styles.css"
             ]
           },
           "configurations": {
@@ -55,30 +55,30 @@
         "storybook": {
           "builder": "@storybook/angular:start-storybook",
           "options": {
-            "configDir": "projects/components/.storybook",
-            "browserTarget": "components:build",
+            "configDir": "projects/storybook/.storybook",
+            "browserTarget": "storybook:build",
             "compodoc": true,
             "compodocArgs": [
               "-e",
               "json",
               "-d",
-              "projects/components"
+              "projects/storybook"
             ],
-            "port": 6006
+            "port": 4200
           }
         },
         "build-storybook": {
           "builder": "@storybook/angular:build-storybook",
           "options": {
-            "configDir": "projects/components/.storybook",
-            "browserTarget": "components:build",
-            "styles": ["projects/components/src/styles.css"],
+            "configDir": "projects/storybook/.storybook",
+            "browserTarget": "storybook:build",
+            "styles": ["projects/storybook/src/styles.css"],
             "compodoc": true,
             "compodocArgs": [
               "-e",
               "json",
               "-d",
-              "projects/components"
+              "projects/storybook"
             ],
             "outputDir": "storybook-static"
           }
