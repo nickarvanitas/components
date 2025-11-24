@@ -4,9 +4,7 @@
   "scripts": {
     "ng": "ng",
     "serve": "ng run storybook:storybook --no-open --ci",
-    "build": "ng build",
-    "storybook": "ng run storybook:storybook --no-open",
-    "build-storybook": "ng run storybook:build-storybook"
+    "build": "ng run storybook:build-storybook",
   },
   "prettier": {
     "overrides": [
