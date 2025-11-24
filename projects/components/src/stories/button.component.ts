@@ -8,12 +8,12 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   template: ` <button
   type="button"
   (click)="onClick.emit($event)"
+  class="bg-blue-600 hover:bg-blue-900 text-white px-4 py-2 rounded-md"
   [ngClass]="classes"
   [ngStyle]="{ 'background-color': backgroundColor }"
 >
   {{ label }}
 </button>`,
-  styleUrls: ['./button.css'],
 })
 export class ButtonComponent {
   /** Is this the principal call to action on the page? */

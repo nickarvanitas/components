@@ -3,10 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
     "storybook": "ng run components:storybook",
     "build-storybook": "ng run components:build-storybook"
   },
@@ -39,7 +36,9 @@
     "@angular/compiler-cli": "^20.1.0",
     "@compodoc/compodoc": "^1.1.32",
     "@storybook/addon-docs": "^10.0.8",
+    "@storybook/addon-styling-webpack": "^3.0.0",
     "@storybook/angular": "^10.0.8",
+    "@tailwindcss/postcss": "^4.1.17",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.8.0",
     "karma": "~6.4.0",
@@ -48,6 +47,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "storybook": "^10.0.8",
+    "tailwindcss": "^4.0.0",
     "typescript": "~5.8.2"
   }
 }
