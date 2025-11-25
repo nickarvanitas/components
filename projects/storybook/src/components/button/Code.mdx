@@ -1,0 +1,9 @@
+import { Meta, Source } from '@storybook/addon-docs/blocks';
+import * as ButtonStories from './button.stories';
+// @ts-ignore - raw-loader import
+import buttonSource from '!!raw-loader!./button.component.ts';
+
+<Meta of={ButtonStories} />
+ 
+<Source code={buttonSource} language="typescript" />
+  

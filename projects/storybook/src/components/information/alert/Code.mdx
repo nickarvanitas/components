@@ -1,0 +1,9 @@
+import { Meta, Source } from '@storybook/addon-docs/blocks';
+import * as AlertStories from './alert.stories';
+// @ts-ignore - raw-loader import
+import alertSource from '!!raw-loader!./alert.ts';
+
+<Meta of={AlertStories} />
+ 
+<Source code={alertSource} language="typescript" />
+  

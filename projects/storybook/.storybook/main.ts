@@ -5,8 +5,25 @@ const config: StorybookConfig = {
     "../src/**/*.mdx",
     "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
   ],
+  features: {
+    actions: false,
+    backgrounds: false,
+    interactions: false,
+    outline: false,
+    measure: false,
+    viewport: false,
+    angularFilterNonInputControls: true,
+  },
   "addons": [
-    "@storybook/addon-docs",
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        sourceLoaderOptions: {
+          injectStoryParameters: false,
+           
+        },
+      },
+    },
     {
       name: '@storybook/addon-styling-webpack',
       options: {
@@ -33,6 +50,6 @@ const config: StorybookConfig = {
   "framework": {
     "name": "@storybook/angular",
     "options": {}
-}
+  }
 };
 export default config;
