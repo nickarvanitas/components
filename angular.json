@@ -5,7 +5,14 @@
   "projects": {
     "storybook": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineTemplate": true,
+          "inlineStyle": true,
+          "skipTests": true,
+          "prefix": "ui"
+        }
+      },
       "root": "projects/storybook",
       "sourceRoot": "projects/storybook/src",
       "prefix": "app",

@@ -1,0 +1,9 @@
+import { Meta, Source } from '@storybook/addon-docs/blocks';
+import * as BadgeStories from './badge.stories';
+// @ts-ignore - raw-loader import
+import badgeSource from '!!raw-loader!./badge.ts';
+
+<Meta of={BadgeStories} />
+ 
+<Source code={badgeSource} language="typescript" />
+  

@@ -1,0 +1,9 @@
+import { Meta, Source } from '@storybook/addon-docs/blocks';
+import * as StackStories from './stack.stories';
+// @ts-ignore - raw-loader import
+import stackSource from '!!raw-loader!./stack.ts';
+
+<Meta of={StackStories} />
+ 
+<Source code={stackSource} language="typescript" />
+  
