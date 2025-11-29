@@ -708,7 +708,7 @@
         },
         {
             "name": "Choicebox",
-            "id": "component-Choicebox-9628b9af0a024e368d2f190c38c34d3def714874e36c5887af061c954e1e65d44b40da01f2e86e204ff474ef43bffb285ab34896f80b2895e4af8167d699e0bd",
+            "id": "component-Choicebox-e2be0b254f36ce9298df58e2d88e737ca7baf49112650fb659e27e7b4edfcdfb793df0dd2fa1ec84b52b2ba6e6df2486c5a79a5b8a179941f5a78aeb4279df7c",
             "file": "projects/storybook/src/components/choicebox/choicebox/choicebox.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -718,7 +718,7 @@
             "selector": "ui-choicebox",
             "styleUrls": [],
             "styles": [],
-            "template": "<label [class]=\"labelClasses()\">\n  <input\n    [type]=\"type()\"\n    [value]=\"value()\"\n    [name]=\"name()\"\n    [disabled]=\"disabled()\"\n    [checked]=\"checked()\"\n    (change)=\"handleChange()\"\n    [class]=\"inputClasses()\"\n  />\n  <span [class]=\"checkmarkClasses()\">\n    @if (checked() && type() === 'checkbox') {\n      <svg class=\"size-3 text-white\" viewBox=\"0 0 12 12\" fill=\"none\">\n        <path d=\"M10 3L4.5 8.5L2 6\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n      </svg>\n    }\n    @if (checked() && type() === 'radio') {\n      <span class=\"size-2 rounded-full bg-white\"></span>\n    }\n  </span>\n  <span class=\"select-none\">\n    <span class=\"font-medium\">{{ title() }}</span>\n    <span class=\"text-sm text-gray-500\">{{ description() }}</span>\n  </span>\n</label>\n",
+            "template": "<label [class]=\"labelClasses()\" [for]=\"value()\">\n  <input\n    [id]=\"value()\"\n    [type]=\"type()\"\n    [value]=\"value()\"\n    [name]=\"name()\"\n    [disabled]=\"disabled()\"\n    [checked]=\"checked()\"\n    (change)=\"handleChange()\"\n    class=\"absolute opacity-0 w-0 h-0\"\n  />\n  <span [class]=\"checkmarkClasses()\">\n    @if (checked() && type() === 'checkbox') {\n      <svg class=\"size-3 text-white\" viewBox=\"0 0 12 12\" fill=\"none\">\n        <path d=\"M10 3L4.5 8.5L2 6\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n      </svg>\n    }\n    @if (checked() && type() === 'radio') {\n      <span class=\"size-2 rounded-full bg-white\"></span>\n    }\n  </span>\n  <ui-stack class=\"select-none\" gap=\"0\">\n    <span class=\"font-medium\">{{ title() }}</span>\n    @if (description()) {\n      <span class=\"text-sm text-gray-500\">{{ description() }}</span>\n    }\n  </ui-stack>\n</label>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -732,19 +732,19 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 41,
+                    "line": 45,
                     "required": false
                 },
                 {
                     "name": "description",
-                    "defaultValue": "''",
+                    "defaultValue": "undefined",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string",
+                    "type": "string | undefined",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 36,
+                    "line": 40,
                     "required": false
                 },
                 {
@@ -756,7 +756,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 39,
+                    "line": 43,
                     "required": false
                 },
                 {
@@ -768,7 +768,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 38,
+                    "line": 42,
                     "required": false
                 },
                 {
@@ -780,7 +780,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 35,
+                    "line": 39,
                     "required": false
                 },
                 {
@@ -792,7 +792,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 40,
+                    "line": 44,
                     "required": false
                 },
                 {
@@ -804,23 +804,11 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 37,
+                    "line": 41,
                     "required": false
                 }
             ],
             "outputsClass": [
-                {
-                    "name": "checked",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 41,
-                    "required": false
-                },
                 {
                     "name": "onChange",
                     "deprecated": false,
@@ -829,43 +817,32 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 42,
+                    "line": 46,
                     "required": false
                 }
             ],
             "propertiesClass": [
                 {
                     "name": "checkmarkClasses",
-                    "defaultValue": "computed(() => {\n    const base = 'flex items-center justify-center shrink-0 border-2 transition-all';\n    const size = 'size-5';\n    const shape = this.type() === 'radio' ? 'rounded-full' : 'rounded';\n    const state = this.checked()\n      ? 'border-blue-500 bg-blue-500'\n      : 'border-zinc-300 bg-white';\n    \n    return `${base} ${size} ${shape} ${state}`;\n  })",
+                    "defaultValue": "computed(() => {\n    const base = 'flex items-center justify-center shrink-0 border-2 transition-all mt-0.5';\n    const size = 'size-5';\n    const shape = this.type() === 'radio' ? 'rounded-full' : 'rounded';\n    const state = this.checked()\n      ? 'border-blue-500 bg-blue-500'\n      : 'border-zinc-300 bg-white';\n    \n    return `${base} ${size} ${shape} ${state}`;\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 64
-                },
-                {
-                    "name": "inputClasses",
-                    "defaultValue": "computed(() => {\n    return 'peer';\n  })",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 60
+                    "line": 63
                 },
                 {
                     "name": "labelClasses",
-                    "defaultValue": "computed(() => {\n    const base = 'relative inline-flex items-center gap-x-2 px-4 py-2.5 rounded-lg border-2 transition-all';\n    const cursor = this.disabled() ? 'cursor-not-allowed opacity-50' : 'cursor-pointer hover:border-blue-300';\n    const state = this.checked() \n      ? 'border-blue-500 bg-blue-50' \n      : 'border-zinc-200 bg-white';\n    return `${base} ${cursor} ${state}`;\n  })",
+                    "defaultValue": "computed(() => {\n    const base = 'relative inline-flex items-start gap-x-3 px-4 py-3 rounded-lg border-2 transition-all';\n    const cursor = this.disabled() ? 'cursor-not-allowed opacity-50' : 'cursor-pointer hover:border-blue-300';\n    const state = this.checked() \n      ? 'border-blue-500 bg-blue-50' \n      : 'border-zinc-200 bg-white';\n    return `${base} ${cursor} ${state}`;\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 51
+                    "line": 54
                 }
             ],
             "methodsClass": [
@@ -875,7 +852,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 48,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -885,11 +862,15 @@
             "hostBindings": [],
             "hostListeners": [],
             "standalone": false,
-            "imports": [],
+            "imports": [
+                {
+                    "name": "Stack"
+                }
+            ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, computed, input, model, output } from '@angular/core';\n\n@Component({\n  selector: 'ui-choicebox',\n  imports: [],\n  template: `\n    <label [class]=\"labelClasses()\">\n      <input \n        [type]=\"type()\" \n        [value]=\"value()\" \n        [name]=\"name()\"\n        [disabled]=\"disabled()\" \n        [checked]=\"checked()\"\n        (change)=\"handleChange()\"\n        [class]=\"inputClasses()\"\n      />\n      <span [class]=\"checkmarkClasses()\">\n        @if (checked() && type() === 'checkbox') {\n          <svg class=\"size-3 text-white\" viewBox=\"0 0 12 12\" fill=\"none\">\n            <path d=\"M10 3L4.5 8.5L2 6\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n          </svg>\n        }\n        @if (checked() && type() === 'radio') {\n          <span class=\"size-2 rounded-full bg-white\"></span>\n        }\n      </span>\n      <span class=\"select-none\">\n        <span class=\"font-medium\">{{ title() }}</span>\n        <span class=\"text-sm text-gray-500\">{{ description() }}</span>\n      </span>\n    </label>\n  `,\n})\nexport class Choicebox {\n  title = input<string>('');\n  description = input<string>('');\n  value = input<string>('');\n  name = input<string>('');\n  disabled = input<boolean>(false);\n  type = input<'radio' | 'checkbox'>('radio');\n  checked = model<boolean>(false);\n  onChange = output<void>();\n\n  handleChange(): void {\n    if (!this.disabled()) {\n      this.checked.set(!this.checked());\n      this.onChange.emit();\n    }\n  }\n\n  labelClasses = computed(() => {\n    const base = 'relative inline-flex items-center gap-x-2 px-4 py-2.5 rounded-lg border-2 transition-all';\n    const cursor = this.disabled() ? 'cursor-not-allowed opacity-50' : 'cursor-pointer hover:border-blue-300';\n    const state = this.checked() \n      ? 'border-blue-500 bg-blue-50' \n      : 'border-zinc-200 bg-white';\n    return `${base} ${cursor} ${state}`;\n  });\n\n  inputClasses = computed(() => {\n    return 'peer';\n  });\n\n  checkmarkClasses = computed(() => {\n    const base = 'flex items-center justify-center shrink-0 border-2 transition-all';\n    const size = 'size-5';\n    const shape = this.type() === 'radio' ? 'rounded-full' : 'rounded';\n    const state = this.checked()\n      ? 'border-blue-500 bg-blue-500'\n      : 'border-zinc-300 bg-white';\n    \n    return `${base} ${size} ${shape} ${state}`;\n  });\n}\n",
+            "sourceCode": "import { Component, computed, input, output } from '@angular/core';\nimport { Stack } from '../../layout/stack/stack';\n\n@Component({\n  selector: 'ui-choicebox',\n  imports: [Stack],\n  template: `\n    <label [class]=\"labelClasses()\" [for]=\"value()\">\n      <input \n        [id]=\"value()\"\n        [type]=\"type()\" \n        [value]=\"value()\" \n        [name]=\"name()\"\n        [disabled]=\"disabled()\" \n        [checked]=\"checked()\"\n        (change)=\"handleChange()\"\n        class=\"absolute opacity-0 w-0 h-0\"\n      />\n      <span [class]=\"checkmarkClasses()\">\n        @if (checked() && type() === 'checkbox') {\n          <svg class=\"size-3 text-white\" viewBox=\"0 0 12 12\" fill=\"none\">\n            <path d=\"M10 3L4.5 8.5L2 6\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n          </svg>\n        }\n        @if (checked() && type() === 'radio') {\n          <span class=\"size-2 rounded-full bg-white\"></span>\n        }\n      </span>\n      <ui-stack class=\"select-none\" gap=\"0\">\n        <span class=\"font-medium\">{{ title() }}</span>\n        @if (description()) {\n          <span class=\"text-sm text-gray-500\">{{ description() }}</span>\n        }\n      </ui-stack>\n    </label>\n  `,\n})\nexport class Choicebox {\n  title = input<string>('');\n  description = input<string | undefined>(undefined);\n  value = input<string>('');\n  name = input<string>('');\n  disabled = input<boolean>(false);\n  type = input<'radio' | 'checkbox'>('radio');\n  checked = input<boolean>(false);\n  onChange = output<void>();\n\n  handleChange(): void {\n    if (!this.disabled()) {\n      this.onChange.emit();\n    }\n  }\n\n  labelClasses = computed(() => {\n    const base = 'relative inline-flex items-start gap-x-3 px-4 py-3 rounded-lg border-2 transition-all';\n    const cursor = this.disabled() ? 'cursor-not-allowed opacity-50' : 'cursor-pointer hover:border-blue-300';\n    const state = this.checked() \n      ? 'border-blue-500 bg-blue-50' \n      : 'border-zinc-200 bg-white';\n    return `${base} ${cursor} ${state}`;\n  });\n\n  checkmarkClasses = computed(() => {\n    const base = 'flex items-center justify-center shrink-0 border-2 transition-all mt-0.5';\n    const size = 'size-5';\n    const shape = this.type() === 'radio' ? 'rounded-full' : 'rounded';\n    const state = this.checked()\n      ? 'border-blue-500 bg-blue-500'\n      : 'border-zinc-300 bg-white';\n    \n    return `${base} ${size} ${shape} ${state}`;\n  });\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -897,7 +878,7 @@
         },
         {
             "name": "ChoiceboxGroup",
-            "id": "component-ChoiceboxGroup-a550355de3609374d8680d552e97ab3c6f476c479815df9f1c2a7a7973982e83c8f22cc059b19774d284b0b1bafdb964e1db5225234af7688662b624ae472a1d",
+            "id": "component-ChoiceboxGroup-d409313568ee8e80ff115e513b154d9cb1e9fdb83c7cb4c4bb02cd80fae459b8bbcb2ae2482acf25c579ea000a19efae5549197f329ca0831861e0ae123ffd26",
             "file": "projects/storybook/src/components/choicebox/choicebox-group/choicebox-group.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -907,7 +888,7 @@
             "selector": "ui-choicebox-group",
             "styleUrls": [],
             "styles": [],
-            "template": "<ui-stack [direction]=\"direction()\" gap=\"2\">\n  @for (choicebox of choiceboxes(); track choicebox.value) {\n    <ui-choicebox\n      [title]=\"choicebox.title\"\n      [value]=\"choicebox.value\"\n      [disabled]=\"choicebox.disabled\"\n      [type]=\"type()\"\n      [name]=\"name()\"\n      (onChange)=\"handleChange(choicebox.value)\"\n    />\n  }\n</ui-stack>\n",
+            "template": "<ui-stack [direction]=\"direction()\" gap=\"2\">\n  @for (choicebox of choiceboxes(); track choicebox.value) {\n    <ui-choicebox\n      [title]=\"choicebox.title\"\n      [description]=\"choicebox.description\"\n      [value]=\"choicebox.value\"\n      [disabled]=\"choicebox.disabled\"\n      [type]=\"type()\"\n      [name]=\"name()\"\n      [checked]=\"isChecked(choicebox.value)\"\n      (onChange)=\"handleChange(choicebox.value)\"\n    />\n  }\n</ui-stack>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -917,23 +898,23 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "{ title: string; value: string; disabled: boolean }[]",
+                    "type": "ChoiceboxOption[]",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 27,
+                    "line": 29,
                     "required": false
                 },
                 {
                     "name": "direction",
-                    "defaultValue": "'row'",
+                    "defaultValue": "'column'",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "\"row\" | \"column\"",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 26,
                     "required": false
                 },
                 {
@@ -945,7 +926,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 26,
+                    "line": 28,
                     "required": false
                 },
                 {
@@ -957,7 +938,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 25,
+                    "line": 27,
                     "required": false
                 },
                 {
@@ -969,7 +950,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 30,
+                    "line": 32,
                     "required": false
                 }
             ],
@@ -983,7 +964,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 30,
+                    "line": 32,
                     "required": false
                 }
             ],
@@ -1002,7 +983,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 40,
+                    "line": 42,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1030,7 +1011,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 32,
+                    "line": 34,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1062,7 +1043,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, input, model } from '@angular/core';\nimport { Stack } from '../../layout/stack/stack';\nimport { Choicebox } from '../choicebox/choicebox';\n\n@Component({\n  selector: 'ui-choicebox-group',\n  imports: [Stack, Choicebox],\n  template: `\n    <ui-stack [direction]=\"direction()\" gap=\"2\">\n      @for (choicebox of choiceboxes(); track choicebox.value) {\n        <ui-choicebox \n          [title]=\"choicebox.title\" \n          [value]=\"choicebox.value\" \n          [disabled]=\"choicebox.disabled\" \n          [type]=\"type()\"\n          [name]=\"name()\"\n          (onChange)=\"handleChange(choicebox.value)\"\n        />\n      }\n    </ui-stack>\n  `,\n})\nexport class ChoiceboxGroup {\n  direction = input<'row' | 'column'>('row');\n  type = input<'radio' | 'checkbox'>('radio');\n  name = input<string>('choicebox-group');\n  choiceboxes = input<{ title: string; value: string; disabled: boolean }[]>([]);\n  \n  // For radio: single value, for checkbox: array of values\n  value = model<string | string[]>('');\n\n  isChecked(choiceboxValue: string): boolean {\n    if (this.type() === 'radio') {\n      return this.value() === choiceboxValue;\n    } else {\n      return Array.isArray(this.value()) && this.value().includes(choiceboxValue);\n    }\n  }\n\n  handleChange(choiceboxValue: string): void {\n    if (this.type() === 'radio') {\n      this.value.set(choiceboxValue);\n    } else {\n      const currentValues = Array.isArray(this.value()) ? this.value() as string[] : [];\n      if (currentValues.includes(choiceboxValue)) {\n        this.value.set(currentValues.filter(v => v !== choiceboxValue));\n      } else {\n        this.value.set([...currentValues, choiceboxValue]);\n      }\n    }\n  }\n}\n",
+            "sourceCode": "import { Component, input, model } from '@angular/core';\nimport { Stack } from '../../layout/stack/stack';\nimport { Choicebox } from '../choicebox/choicebox';\n\n@Component({\n  selector: 'ui-choicebox-group',\n  imports: [Stack, Choicebox],\n  template: `\n    <ui-stack [direction]=\"direction()\" gap=\"2\">\n      @for (choicebox of choiceboxes(); track choicebox.value) {\n        <ui-choicebox \n          [title]=\"choicebox.title\" \n          [description]=\"choicebox.description\"\n          [value]=\"choicebox.value\" \n          [disabled]=\"choicebox.disabled\" \n          [type]=\"type()\"\n          [name]=\"name()\"\n          [checked]=\"isChecked(choicebox.value)\"\n          (onChange)=\"handleChange(choicebox.value)\"\n        />\n      }\n    </ui-stack>\n  `,\n})\nexport class ChoiceboxGroup {\n  direction = input<'row' | 'column'>('column');\n  type = input<'radio' | 'checkbox'>('radio');\n  name = input<string>('choicebox-group');\n  choiceboxes = input<ChoiceboxOption[]>([]);\n  \n  // For radio: single value, for checkbox: array of values\n  value = model<string | string[]>('');\n\n  isChecked(choiceboxValue: string): boolean {\n    if (this.type() === 'radio') {\n      return this.value() === choiceboxValue;\n    } else {\n      return Array.isArray(this.value()) && this.value().includes(choiceboxValue);\n    }\n  }\n\n  handleChange(choiceboxValue: string): void {\n    if (this.type() === 'radio') {\n      this.value.set(choiceboxValue);\n    } else {\n      const currentValues = Array.isArray(this.value()) ? this.value() as string[] : [];\n      if (currentValues.includes(choiceboxValue)) {\n        this.value.set(currentValues.filter(v => v !== choiceboxValue));\n      } else {\n        this.value.set([...currentValues, choiceboxValue]);\n      }\n    }\n  }\n}\n\nexport type ChoiceboxOption = {\n  title: string;\n  description?: string;\n  value: string;\n  disabled: boolean;\n};\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -1283,6 +1264,17 @@
                 "kind": 193
             },
             {
+                "name": "ChoiceboxOption",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "projects/storybook/src/components/choicebox/choicebox-group/choicebox-group.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 188
+            },
+            {
                 "name": "StackGap",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -1395,6 +1387,19 @@
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 193
+                }
+            ],
+            "projects/storybook/src/components/choicebox/choicebox-group/choicebox-group.ts": [
+                {
+                    "name": "ChoiceboxOption",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "projects/storybook/src/components/choicebox/choicebox-group/choicebox-group.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 188
                 }
             ],
             "projects/storybook/src/components/layout/stack/stack.ts": [
@@ -1517,12 +1522,22 @@
                 "status": "low"
             },
             {
+                "filePath": "projects/storybook/src/components/choicebox/choicebox-group/choicebox-group.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "ChoiceboxOption",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/storybook/src/components/choicebox/choicebox/choicebox.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "Choicebox",
                 "coveragePercent": 0,
-                "coverageCount": "0/14",
+                "coverageCount": "0/12",
                 "status": "low"
             },
             {
