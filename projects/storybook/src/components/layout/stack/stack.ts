@@ -4,7 +4,7 @@ import { Component, computed, input } from '@angular/core';
   selector: 'ui-stack',
   imports: [],
   template: `
-    <div [class]="classes()">
+    <div [class]="classes() + ' ' + cx()">
       <ng-content />
     </div>
   `,
@@ -15,6 +15,7 @@ export class Stack {
   align = input<'start' | 'center' | 'end'>('start');
   justify = input<'start' | 'center' | 'end'>('start');
   wrap = input<boolean>(false);
+  cx = input<string>('');
 
   classes = computed(() => {
     const baseClass = 'flex';

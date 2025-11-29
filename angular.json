@@ -21,9 +21,6 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "projects/storybook/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
             "tsConfig": "projects/storybook/tsconfig.app.json",
             "assets": [
               {

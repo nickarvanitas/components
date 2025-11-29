@@ -14,38 +14,35 @@ const config: StorybookConfig = {
     viewport: false,
     angularFilterNonInputControls: true,
   },
-  "addons": [
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        sourceLoaderOptions: {
-          injectStoryParameters: false,
-           
-        },
+  "addons": [{
+    name: '@storybook/addon-docs',
+    options: {
+      sourceLoaderOptions: {
+        injectStoryParameters: false,
+         
       },
     },
-    {
-      name: '@storybook/addon-styling-webpack',
-      options: {
-        rules: [
-          {
-            test: /\.css$/,
-            use: [
-              'style-loader',
-              {
-                loader: 'css-loader',
-                options: { importLoaders: 1 }
-              },
-              {
-                // Gets options from `postcss.config.js` in your project root
-                loader: 'postcss-loader'
-              }
-            ],
-          }
-        ]
-      }
+  }, {
+    name: '@storybook/addon-styling-webpack',
+    options: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: { importLoaders: 1 }
+            },
+            {
+              // Gets options from `postcss.config.js` in your project root
+              loader: 'postcss-loader'
+            }
+          ],
+        }
+      ]
     }
-  ],
+  }],
   
   "framework": {
     "name": "@storybook/angular",

@@ -137,35 +137,24 @@
         },
         {
             "name": "Avatar",
-            "id": "component-Avatar-53d594db3835df614f8e49504a743197a1d7c004639fb034a92996f64d98088c95df0506cef356c8a35cef72eba3fd91fb1ce97e25b0af4b17b3ff3052cf3911",
+            "id": "component-Avatar-6cc4dfa1690ec9dab96d93380dfbbd0995396da694cb3ebfba35013cbcf7814ee0abadf08c0d66dfe23d176740fc86b907cd628614ba4a3d55bd612417d4b13d",
             "file": "projects/storybook/src/components/avatar/avatar.ts",
             "encapsulation": [],
             "entryComponents": [],
+            "host": {},
             "inputs": [],
             "outputs": [],
             "providers": [],
             "selector": "ui-avatar",
             "styleUrls": [],
             "styles": [],
-            "template": "<div [class]=\"classes()\">\n  <img [src]=\"src()\" [alt]=\"alt()\" />\n</div>\n",
+            "template": "<div [class]=\"classes()\">\n  <img [src]=\"url()\" [alt]=\"alt()\" />\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "size",
-                    "defaultValue": "'md'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "AvatarSize | number",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 13,
-                    "required": false
-                },
-                {
-                    "name": "src",
+                    "name": "alt",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -173,67 +162,19 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 27,
+                    "line": 18,
                     "required": false
-                }
-            ],
-            "outputsClass": [],
-            "propertiesClass": [
+                },
                 {
-                    "name": "classes",
-                    "defaultValue": "computed(() => {\n    const baseClass = 'inline-flex items-center justify-center rounded-full';\n    const sizeMap: Record<AvatarSize, string> = {\n      xs: 'size-6',\n      sm: 'size-8',\n      md: 'size-10',\n      lg: 'size-12',\n      xl: 'size-14',\n    };\n    return `${baseClass} ${sizeMap[this.size()]}`;\n  })",
+                    "name": "email",
+                    "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "unknown",
+                    "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 15
-                }
-            ],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": false,
-            "imports": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, computed, input } from '@angular/core';\n\n@Component({\n  selector: 'ui-avatar',\n  imports: [],\n  template: `\n    <div [class]=\"classes()\">\n      <img [src]=\"src()\" [alt]=\"alt()\" />\n    </div>\n  `,\n})\nexport class Avatar {\n size = input<AvatarSize | number>('md');\n\n  classes = computed(() => {\n    const baseClass = 'inline-flex items-center justify-center rounded-full';\n    const sizeMap: Record<AvatarSize, string> = {\n      xs: 'size-6',\n      sm: 'size-8',\n      md: 'size-10',\n      lg: 'size-12',\n      xl: 'size-14',\n    };\n    return `${baseClass} ${sizeMap[this.size()]}`;\n  });\n\n  src = input<string>('');\n}\n\ntype AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": []
-        },
-        {
-            "name": "AvatarGroup",
-            "id": "component-AvatarGroup-21db0625d7460eb094442e907856597a38890465adb252557e514b650eb6aafee28857af80af43e68e8aad953a8c1737699241c81a80829195f6229f35be16d9",
-            "file": "projects/storybook/src/components/avatar/avatar-group.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "ui-avatar-group",
-            "styleUrls": [],
-            "styles": [],
-            "template": "<div [class]=\"classes()\">\n    @for (avatar of people(); track avatar.id) {\n      <ui-avatar [src]=\"avatar.src()\" [alt]=\"'Avatar for ' + avatar.name\" [size]=\"size()\" />\n    }\n</div>\n",
-            "templateUrl": [],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "people",
-                    "defaultValue": "[]",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "AvatarGroupPerson[]",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 17,
+                    "line": 19,
                     "required": false
                 },
                 {
@@ -245,7 +186,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 16,
+                    "line": 17,
                     "required": false
                 }
             ],
@@ -253,14 +194,36 @@
             "propertiesClass": [
                 {
                     "name": "classes",
-                    "defaultValue": "computed(() => {\n    const baseClass = 'inline-flex items-center justify-center rounded-full';\n    const sizeMap: Record<AvatarSize, string> = {\n      xs: 'size-6',\n      sm: 'size-8',\n      md: 'size-10',\n      lg: 'size-12',\n      xl: 'size-14',\n    };\n    return `${baseClass} ${sizeMap[this.size()]}`;\n  })",
+                    "defaultValue": "computed(() => {\n    const baseClass = 'inline-flex items-center justify-center rounded-full overflow-hidden';\n    const sizeMap: Record<AvatarSize, string> = {\n      xs: 'size-6',\n      sm: 'size-8',\n      md: 'size-10',\n      lg: 'size-12',\n      xl: 'size-14',\n    };\n    return `${baseClass} ${sizeMap[this.size()]}`;\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 19
+                    "line": 21
+                },
+                {
+                    "name": "hashedEmail",
+                    "defaultValue": "computed(() => {\n    return sha256( this.email() );\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
+                },
+                {
+                    "name": "url",
+                    "defaultValue": "computed(() => {\n    const sizeMap: Record<AvatarSize, number> = {\n      xs: 24,\n      sm: 32,\n      md: 40,\n      lg: 48,\n      xl: 56,\n    };\n    const pixelSize = sizeMap[this.size()];\n    return `https://gravatar.com/avatar/${this.hashedEmail()}?s=${pixelSize}&d=mp&r=g`;\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 37
                 }
             ],
             "methodsClass": [],
@@ -273,7 +236,98 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, computed, input } from '@angular/core';\nimport { AvatarSize } from './avatar';\n\n@Component({\n  selector: 'ui-avatar-group',\n  imports: [],\n  template: `\n    <div [class]=\"classes()\">\n        @for (avatar of people(); track avatar.id) {\n          <ui-avatar [src]=\"avatar.src()\" [alt]=\"'Avatar for ' + avatar.name\" [size]=\"size()\" />\n        }\n    </div>\n  `,\n})\nexport class AvatarGroup {\n size = input<AvatarSize>('md');\n people = input<AvatarGroupPerson[]>([]);\n\n  classes = computed(() => {\n    const baseClass = 'inline-flex items-center justify-center rounded-full';\n    const sizeMap: Record<AvatarSize, string> = {\n      xs: 'size-6',\n      sm: 'size-8',\n      md: 'size-10',\n      lg: 'size-12',\n      xl: 'size-14',\n    };\n    return `${baseClass} ${sizeMap[this.size()]}`;\n  });\n}\n\ntype AvatarGroupPerson = {\n  id: string;\n  src: string;\n  name: string;\n};\n",
+            "sourceCode": "import { Component, computed, input } from '@angular/core';\nimport sha256 from 'crypto-js/sha256';\n\n@Component({\n  selector: 'ui-avatar',\n  imports: [],\n  host: {\n    class: 'inline-flex',\n  },\n  template: `\n    <div [class]=\"classes()\">\n      <img [src]=\"url()\" [alt]=\"alt()\" />\n    </div>\n  `,\n})\nexport class Avatar {\n size = input<AvatarSize>('md');\n alt = input<string>('');\n email = input<string>('');\n\n  classes = computed(() => {\n    const baseClass = 'inline-flex items-center justify-center rounded-full overflow-hidden';\n    const sizeMap: Record<AvatarSize, string> = {\n      xs: 'size-6',\n      sm: 'size-8',\n      md: 'size-10',\n      lg: 'size-12',\n      xl: 'size-14',\n    };\n    return `${baseClass} ${sizeMap[this.size()]}`;\n  });\n\n  hashedEmail = computed(() => {\n    return sha256( this.email() );\n  });\n\n  url = computed(() => {\n    const sizeMap: Record<AvatarSize, number> = {\n      xs: 24,\n      sm: 32,\n      md: 40,\n      lg: 48,\n      xl: 56,\n    };\n    const pixelSize = sizeMap[this.size()];\n    return `https://gravatar.com/avatar/${this.hashedEmail()}?s=${pixelSize}&d=mp&r=g`;\n  });\n\n}\n\nexport type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": []
+        },
+        {
+            "name": "AvatarGroup",
+            "id": "component-AvatarGroup-fecaa23649239b627de8b6dce5af645d6d13dc23d1062ef21c39adb6fea89e64b337d108d91f8e0b92964399b684cc85740b071ce4f71b8e2b85130885718d7e",
+            "file": "projects/storybook/src/components/avatar-group/avatar-group.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ui-avatar-group",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<ui-stack direction=\"row\" gap=\"0\" cx=\"*:nth-[n+2]:-ml-2\">\n    @for (avatar of people().slice(0, limit()); track avatar.email) {\n      <ui-avatar [email]=\"avatar.email\" [alt]=\"'Avatar for ' + avatar.name\" [size]=\"size()\" />\n    }\n    @if (people().length > limit()) {\n      <div [class]=\"excessLimitClasses()\">\n        +{{ people().length - limit() }}\n      </div>\n    }\n</ui-stack>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "limit",
+                    "defaultValue": "2",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25,
+                    "required": false
+                },
+                {
+                    "name": "people",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "AvatarGroupPerson[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "required": false
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'md'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "AvatarSize",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "required": false
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "excessLimitClasses",
+                    "defaultValue": "computed(() => {\n\n  const sizeMap: Record<AvatarSize, string> = {\n    xs: 'size-6 text-xs',\n    sm: 'size-8 text-sm',\n    md: 'size-10 text-base',\n    lg: 'size-12 text-lg',\n    xl: 'size-14 text-xl',\n  };\n  return `flex items-center justify-center bg-zinc-800 text-white rounded-full ${sizeMap[this.size()]}`;\n })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "Avatar"
+                },
+                {
+                    "name": "Stack"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, computed, input } from '@angular/core';\nimport { Avatar, AvatarSize } from '../avatar/avatar';\nimport { Stack } from '../layout/stack/stack';\n\n@Component({\n  selector: 'ui-avatar-group',\n  imports: [Avatar, Stack],\n  template: `\n    <ui-stack direction=\"row\" gap=\"0\" cx=\"*:nth-[n+2]:-ml-2\">\n        @for (avatar of people().slice(0, limit()); track avatar.email) {\n          <ui-avatar [email]=\"avatar.email\" [alt]=\"'Avatar for ' + avatar.name\" [size]=\"size()\" />\n        }\n        @if (people().length > limit()) {\n          <div [class]=\"excessLimitClasses()\">\n            +{{ people().length - limit() }}\n          </div>\n        }\n    </ui-stack>\n  `,\n})\n\nexport class AvatarGroup {\n size = input<AvatarSize>('md');\n people = input<AvatarGroupPerson[]>([]);\n limit = input<number>(2);\n\n excessLimitClasses = computed(() => {\n\n  const sizeMap: Record<AvatarSize, string> = {\n    xs: 'size-6 text-xs',\n    sm: 'size-8 text-sm',\n    md: 'size-10 text-base',\n    lg: 'size-12 text-lg',\n    xl: 'size-14 text-xl',\n  };\n  return `flex items-center justify-center bg-zinc-800 text-white rounded-full ${sizeMap[this.size()]}`;\n });\n}\n\ntype AvatarGroupPerson = {\n  email: string;\n  name: string;\n  alt: string;\n};\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -281,7 +335,7 @@
         },
         {
             "name": "Badge",
-            "id": "component-Badge-cd51117b2f40aa85b01e69a14c63b45e68854e3502616d897cc6dd168eea40a3ef12bc770ab80c3541ff4317169d5685facc37a14e42538b36ba587649176656",
+            "id": "component-Badge-b6bd2cb2639599d3d2437868e16f8b95363f7600db60e0c628369fe1e0c1d55867aa27c3826e76c3bf1113004e0b339bdf2c8533529d27425df4db0e1cfd0cfb",
             "file": "projects/storybook/src/components/information/badge/badge.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -372,7 +426,7 @@
             "propertiesClass": [
                 {
                     "name": "classes",
-                    "defaultValue": "computed(() => {\n    const baseClass = 'inline-flex items-center gap-x-1 rounded-full text-xs font-medium';\n    const sizeMap: Record<BadgeSize, string> = {\n      xs: 'px-1.5 py-1 text-xs',\n      sm: 'px-2 py-1.5 text-sm',\n      md: 'px-2.5 py-2 text-base',\n      lg: 'px-3 py-2.5 text-lg',\n    };\n    const colorMap: Record<'solid' | 'light', Record<BadgeColor, string>> = {\n      solid: {\n        blue: 'bg-blue-500 text-white',\n        green: 'bg-green-500 text-white',\n        red: 'bg-red-500 text-white',\n        yellow: 'bg-yellow-500 text-white',\n        purple: 'bg-purple-500 text-white',\n        orange: 'bg-orange-500 text-white',\n      },\n      light: {\n        blue: 'bg-blue-50 text-blue-500',\n        green: 'bg-green-50 text-green-500',\n        red: 'bg-red-50 text-red-500',\n        yellow: 'bg-yellow-50 text-yellow-500',\n        purple: 'bg-purple-50 text-purple-500',\n        orange: 'bg-orange-50 text-orange-500',\n      },\n    };\n    const iconPosMap: Record<'left' | 'right', string> = {\n      left: 'flex-row-reverse',\n      right: 'flex-row',\n    };\n    return `${baseClass} ${sizeMap[this.size()]} ${colorMap[this.variant()][this.color()]} ${iconPosMap[this.iconPos()]}`;\n  })",
+                    "defaultValue": "computed(() => {\n    const baseClass = 'inline-flex items-center gap-x-1 rounded-full text-xs font-medium';\n    const sizeMap: Record<BadgeSize, string> = {\n      xs: 'px-1.5 py-1 text-xs',\n      sm: 'px-2 py-1.5 text-sm',\n      md: 'px-2.5 py-2 text-base',\n      lg: 'px-3 py-2.5 text-lg',\n    };\n    const colorMap: Record<'solid' | 'light', Record<BadgeColor, string>> = {\n      solid: {\n        blue: 'bg-blue-600 text-white',\n        green: 'bg-green-600 text-white',\n        red: 'bg-red-600 text-white',\n        yellow: 'bg-yellow-600 text-white',\n        purple: 'bg-purple-600 text-white',\n        orange: 'bg-orange-600 text-white',\n      },\n      light: {\n        blue: 'bg-blue-50 text-blue-600',\n        green: 'bg-green-50 text-green-600',\n        red: 'bg-red-50 text-red-600',\n        yellow: 'bg-yellow-50 text-yellow-600',\n        purple: 'bg-purple-50 text-purple-600',\n        orange: 'bg-orange-50 text-orange-600',\n      },\n    };\n    const iconPosMap: Record<'left' | 'right', string> = {\n      left: 'flex-row-reverse',\n      right: 'flex-row',\n    };\n    return `${baseClass} ${sizeMap[this.size()]} ${colorMap[this.variant()][this.color()]} ${iconPosMap[this.iconPos()]}`;\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
@@ -392,7 +446,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, computed, input } from '@angular/core';\n\n@Component({\n  selector: 'ui-badge',\n  imports: [],\n  template: `\n    <div [class]=\"classes()\">\n      <span>{{ label() }}</span>\n      @if (icon()) {\n        <i [class]=\"icon()\"></i>\n      }\n    </div>\n  `,\n})\nexport class Badge {\n  color = input<BadgeColor>('blue');\n  label = input.required<string>();\n  icon = input<string>('');\n  iconPos = input<'left' | 'right'>('left');\n  variant = input<'solid' | 'light'>('solid');\n  size = input<'xs' | 'sm' | 'md' | 'lg'>('md');\n\n  classes = computed(() => {\n    const baseClass = 'inline-flex items-center gap-x-1 rounded-full text-xs font-medium';\n    const sizeMap: Record<BadgeSize, string> = {\n      xs: 'px-1.5 py-1 text-xs',\n      sm: 'px-2 py-1.5 text-sm',\n      md: 'px-2.5 py-2 text-base',\n      lg: 'px-3 py-2.5 text-lg',\n    };\n    const colorMap: Record<'solid' | 'light', Record<BadgeColor, string>> = {\n      solid: {\n        blue: 'bg-blue-500 text-white',\n        green: 'bg-green-500 text-white',\n        red: 'bg-red-500 text-white',\n        yellow: 'bg-yellow-500 text-white',\n        purple: 'bg-purple-500 text-white',\n        orange: 'bg-orange-500 text-white',\n      },\n      light: {\n        blue: 'bg-blue-50 text-blue-500',\n        green: 'bg-green-50 text-green-500',\n        red: 'bg-red-50 text-red-500',\n        yellow: 'bg-yellow-50 text-yellow-500',\n        purple: 'bg-purple-50 text-purple-500',\n        orange: 'bg-orange-50 text-orange-500',\n      },\n    };\n    const iconPosMap: Record<'left' | 'right', string> = {\n      left: 'flex-row-reverse',\n      right: 'flex-row',\n    };\n    return `${baseClass} ${sizeMap[this.size()]} ${colorMap[this.variant()][this.color()]} ${iconPosMap[this.iconPos()]}`;\n  });\n  \n\n}\n\ntype BadgeColor = 'blue' | 'green' | 'red' | 'yellow' | 'purple' | 'orange';\ntype BadgeSize = 'xs' | 'sm' | 'md' | 'lg';",
+            "sourceCode": "import { Component, computed, input } from '@angular/core';\n\n@Component({\n  selector: 'ui-badge',\n  imports: [],\n  template: `\n    <div [class]=\"classes()\">\n      <span>{{ label() }}</span>\n      @if (icon()) {\n        <i [class]=\"icon()\"></i>\n      }\n    </div>\n  `,\n})\nexport class Badge {\n  color = input<BadgeColor>('blue');\n  label = input.required<string>();\n  icon = input<string>('');\n  iconPos = input<'left' | 'right'>('left');\n  variant = input<'solid' | 'light'>('solid');\n  size = input<'xs' | 'sm' | 'md' | 'lg'>('md');\n\n  classes = computed(() => {\n    const baseClass = 'inline-flex items-center gap-x-1 rounded-full text-xs font-medium';\n    const sizeMap: Record<BadgeSize, string> = {\n      xs: 'px-1.5 py-1 text-xs',\n      sm: 'px-2 py-1.5 text-sm',\n      md: 'px-2.5 py-2 text-base',\n      lg: 'px-3 py-2.5 text-lg',\n    };\n    const colorMap: Record<'solid' | 'light', Record<BadgeColor, string>> = {\n      solid: {\n        blue: 'bg-blue-600 text-white',\n        green: 'bg-green-600 text-white',\n        red: 'bg-red-600 text-white',\n        yellow: 'bg-yellow-600 text-white',\n        purple: 'bg-purple-600 text-white',\n        orange: 'bg-orange-600 text-white',\n      },\n      light: {\n        blue: 'bg-blue-50 text-blue-600',\n        green: 'bg-green-50 text-green-600',\n        red: 'bg-red-50 text-red-600',\n        yellow: 'bg-yellow-50 text-yellow-600',\n        purple: 'bg-purple-50 text-purple-600',\n        orange: 'bg-orange-50 text-orange-600',\n      },\n    };\n    const iconPosMap: Record<'left' | 'right', string> = {\n      left: 'flex-row-reverse',\n      right: 'flex-row',\n    };\n    return `${baseClass} ${sizeMap[this.size()]} ${colorMap[this.variant()][this.color()]} ${iconPosMap[this.iconPos()]}`;\n  });\n  \n\n}\n\ntype BadgeColor = 'blue' | 'green' | 'red' | 'yellow' | 'purple' | 'orange';\ntype BadgeSize = 'xs' | 'sm' | 'md' | 'lg';",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -618,8 +672,405 @@
             "extends": []
         },
         {
+            "name": "Checkbox",
+            "id": "component-Checkbox-ef0867b78df3608b2ecd1f143e3d73d3ed28a9d2a20851fceceae9d97ce07dd47563885135226ad667aed7051e5b91a5601a767021f23f84701e683edd0ea73e",
+            "file": "projects/storybook/src/components/choicebox/checkbox/checkbox.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ui-checkbox",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<p>\n  checkbox works!\n</p>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'ui-checkbox',\n  imports: [],\n  template: `\n    <p>\n      checkbox works!\n    </p>\n  `,\n})\nexport class Checkbox {\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": []
+        },
+        {
+            "name": "Choicebox",
+            "id": "component-Choicebox-9628b9af0a024e368d2f190c38c34d3def714874e36c5887af061c954e1e65d44b40da01f2e86e204ff474ef43bffb285ab34896f80b2895e4af8167d699e0bd",
+            "file": "projects/storybook/src/components/choicebox/choicebox/choicebox.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ui-choicebox",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<label [class]=\"labelClasses()\">\n  <input\n    [type]=\"type()\"\n    [value]=\"value()\"\n    [name]=\"name()\"\n    [disabled]=\"disabled()\"\n    [checked]=\"checked()\"\n    (change)=\"handleChange()\"\n    [class]=\"inputClasses()\"\n  />\n  <span [class]=\"checkmarkClasses()\">\n    @if (checked() && type() === 'checkbox') {\n      <svg class=\"size-3 text-white\" viewBox=\"0 0 12 12\" fill=\"none\">\n        <path d=\"M10 3L4.5 8.5L2 6\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n      </svg>\n    }\n    @if (checked() && type() === 'radio') {\n      <span class=\"size-2 rounded-full bg-white\"></span>\n    }\n  </span>\n  <span class=\"select-none\">\n    <span class=\"font-medium\">{{ title() }}</span>\n    <span class=\"text-sm text-gray-500\">{{ description() }}</span>\n  </span>\n</label>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "checked",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 41,
+                    "required": false
+                },
+                {
+                    "name": "description",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 36,
+                    "required": false
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "required": false
+                },
+                {
+                    "name": "name",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 38,
+                    "required": false
+                },
+                {
+                    "name": "title",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35,
+                    "required": false
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "'radio'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "\"radio\" | \"checkbox\"",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "required": false
+                },
+                {
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 37,
+                    "required": false
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "checked",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 41,
+                    "required": false
+                },
+                {
+                    "name": "onChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "void",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 42,
+                    "required": false
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "checkmarkClasses",
+                    "defaultValue": "computed(() => {\n    const base = 'flex items-center justify-center shrink-0 border-2 transition-all';\n    const size = 'size-5';\n    const shape = this.type() === 'radio' ? 'rounded-full' : 'rounded';\n    const state = this.checked()\n      ? 'border-blue-500 bg-blue-500'\n      : 'border-zinc-300 bg-white';\n    \n    return `${base} ${size} ${shape} ${state}`;\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 64
+                },
+                {
+                    "name": "inputClasses",
+                    "defaultValue": "computed(() => {\n    return 'peer';\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 60
+                },
+                {
+                    "name": "labelClasses",
+                    "defaultValue": "computed(() => {\n    const base = 'relative inline-flex items-center gap-x-2 px-4 py-2.5 rounded-lg border-2 transition-all';\n    const cursor = this.disabled() ? 'cursor-not-allowed opacity-50' : 'cursor-pointer hover:border-blue-300';\n    const state = this.checked() \n      ? 'border-blue-500 bg-blue-50' \n      : 'border-zinc-200 bg-white';\n    return `${base} ${cursor} ${state}`;\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 51
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "handleChange",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 44,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, computed, input, model, output } from '@angular/core';\n\n@Component({\n  selector: 'ui-choicebox',\n  imports: [],\n  template: `\n    <label [class]=\"labelClasses()\">\n      <input \n        [type]=\"type()\" \n        [value]=\"value()\" \n        [name]=\"name()\"\n        [disabled]=\"disabled()\" \n        [checked]=\"checked()\"\n        (change)=\"handleChange()\"\n        [class]=\"inputClasses()\"\n      />\n      <span [class]=\"checkmarkClasses()\">\n        @if (checked() && type() === 'checkbox') {\n          <svg class=\"size-3 text-white\" viewBox=\"0 0 12 12\" fill=\"none\">\n            <path d=\"M10 3L4.5 8.5L2 6\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n          </svg>\n        }\n        @if (checked() && type() === 'radio') {\n          <span class=\"size-2 rounded-full bg-white\"></span>\n        }\n      </span>\n      <span class=\"select-none\">\n        <span class=\"font-medium\">{{ title() }}</span>\n        <span class=\"text-sm text-gray-500\">{{ description() }}</span>\n      </span>\n    </label>\n  `,\n})\nexport class Choicebox {\n  title = input<string>('');\n  description = input<string>('');\n  value = input<string>('');\n  name = input<string>('');\n  disabled = input<boolean>(false);\n  type = input<'radio' | 'checkbox'>('radio');\n  checked = model<boolean>(false);\n  onChange = output<void>();\n\n  handleChange(): void {\n    if (!this.disabled()) {\n      this.checked.set(!this.checked());\n      this.onChange.emit();\n    }\n  }\n\n  labelClasses = computed(() => {\n    const base = 'relative inline-flex items-center gap-x-2 px-4 py-2.5 rounded-lg border-2 transition-all';\n    const cursor = this.disabled() ? 'cursor-not-allowed opacity-50' : 'cursor-pointer hover:border-blue-300';\n    const state = this.checked() \n      ? 'border-blue-500 bg-blue-50' \n      : 'border-zinc-200 bg-white';\n    return `${base} ${cursor} ${state}`;\n  });\n\n  inputClasses = computed(() => {\n    return 'peer';\n  });\n\n  checkmarkClasses = computed(() => {\n    const base = 'flex items-center justify-center shrink-0 border-2 transition-all';\n    const size = 'size-5';\n    const shape = this.type() === 'radio' ? 'rounded-full' : 'rounded';\n    const state = this.checked()\n      ? 'border-blue-500 bg-blue-500'\n      : 'border-zinc-300 bg-white';\n    \n    return `${base} ${size} ${shape} ${state}`;\n  });\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": []
+        },
+        {
+            "name": "ChoiceboxGroup",
+            "id": "component-ChoiceboxGroup-a550355de3609374d8680d552e97ab3c6f476c479815df9f1c2a7a7973982e83c8f22cc059b19774d284b0b1bafdb964e1db5225234af7688662b624ae472a1d",
+            "file": "projects/storybook/src/components/choicebox/choicebox-group/choicebox-group.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ui-choicebox-group",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<ui-stack [direction]=\"direction()\" gap=\"2\">\n  @for (choicebox of choiceboxes(); track choicebox.value) {\n    <ui-choicebox\n      [title]=\"choicebox.title\"\n      [value]=\"choicebox.value\"\n      [disabled]=\"choicebox.disabled\"\n      [type]=\"type()\"\n      [name]=\"name()\"\n      (onChange)=\"handleChange(choicebox.value)\"\n    />\n  }\n</ui-stack>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "choiceboxes",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "{ title: string; value: string; disabled: boolean }[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 27,
+                    "required": false
+                },
+                {
+                    "name": "direction",
+                    "defaultValue": "'row'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "\"row\" | \"column\"",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "required": false
+                },
+                {
+                    "name": "name",
+                    "defaultValue": "'choicebox-group'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26,
+                    "required": false
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "'radio'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "\"radio\" | \"checkbox\"",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25,
+                    "required": false
+                },
+                {
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string | string[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30,
+                    "required": false
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string | string[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30,
+                    "required": false
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "handleChange",
+                    "args": [
+                        {
+                            "name": "choiceboxValue",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 40,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "choiceboxValue",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "isChecked",
+                    "args": [
+                        {
+                            "name": "choiceboxValue",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 32,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "choiceboxValue",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "Stack"
+                },
+                {
+                    "name": "Choicebox"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, input, model } from '@angular/core';\nimport { Stack } from '../../layout/stack/stack';\nimport { Choicebox } from '../choicebox/choicebox';\n\n@Component({\n  selector: 'ui-choicebox-group',\n  imports: [Stack, Choicebox],\n  template: `\n    <ui-stack [direction]=\"direction()\" gap=\"2\">\n      @for (choicebox of choiceboxes(); track choicebox.value) {\n        <ui-choicebox \n          [title]=\"choicebox.title\" \n          [value]=\"choicebox.value\" \n          [disabled]=\"choicebox.disabled\" \n          [type]=\"type()\"\n          [name]=\"name()\"\n          (onChange)=\"handleChange(choicebox.value)\"\n        />\n      }\n    </ui-stack>\n  `,\n})\nexport class ChoiceboxGroup {\n  direction = input<'row' | 'column'>('row');\n  type = input<'radio' | 'checkbox'>('radio');\n  name = input<string>('choicebox-group');\n  choiceboxes = input<{ title: string; value: string; disabled: boolean }[]>([]);\n  \n  // For radio: single value, for checkbox: array of values\n  value = model<string | string[]>('');\n\n  isChecked(choiceboxValue: string): boolean {\n    if (this.type() === 'radio') {\n      return this.value() === choiceboxValue;\n    } else {\n      return Array.isArray(this.value()) && this.value().includes(choiceboxValue);\n    }\n  }\n\n  handleChange(choiceboxValue: string): void {\n    if (this.type() === 'radio') {\n      this.value.set(choiceboxValue);\n    } else {\n      const currentValues = Array.isArray(this.value()) ? this.value() as string[] : [];\n      if (currentValues.includes(choiceboxValue)) {\n        this.value.set(currentValues.filter(v => v !== choiceboxValue));\n      } else {\n        this.value.set([...currentValues, choiceboxValue]);\n      }\n    }\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": []
+        },
+        {
             "name": "Stack",
-            "id": "component-Stack-086390f88a3ccdc129840c9c2462461a2638bacf59826acf88fd4e30c80efe4624dba30c2189e50e705b9dd45209c712131df7b2bb6f8d68cfc86d46840c0559",
+            "id": "component-Stack-e97af61a884b23e4430fc61cd2832f0dc97395c72274c912d194cecde0578105400888225edb6cf90183bf7c7d0e88c73af666869cb861a97cf7957e30de8609",
             "file": "projects/storybook/src/components/layout/stack/stack.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -629,7 +1080,7 @@
             "selector": "ui-stack",
             "styleUrls": [],
             "styles": [],
-            "template": "    <div [class]=\"classes()\">\n<ng-content />\n    </div>\n",
+            "template": "<div [class]=\"classes() + ' ' + cx()\">\n  <ng-content />\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -644,6 +1095,18 @@
                     "optional": false,
                     "description": "",
                     "line": 15,
+                    "required": false
+                },
+                {
+                    "name": "cx",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
                     "required": false
                 },
                 {
@@ -706,7 +1169,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 19
+                    "line": 20
                 }
             ],
             "methodsClass": [],
@@ -719,7 +1182,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, computed, input } from '@angular/core';\n\n@Component({\n  selector: 'ui-stack',\n  imports: [],\n  template: `\n    <div [class]=\"classes()\">\n<ng-content />\n    </div>\n  `,\n})\nexport class Stack {\n  direction = input<'column' | 'row'>('column');\n  gap = input<StackGap>('0');\n  align = input<'start' | 'center' | 'end'>('start');\n  justify = input<'start' | 'center' | 'end'>('start');\n  wrap = input<boolean>(false);\n\n  classes = computed(() => {\n    const baseClass = 'flex';\n    const directionMap: Record<'column' | 'row', string> = {\n      column: 'flex-col',\n      row: 'flex-row',\n    };\n    const gapMap: Record<StackGap, string> = {\n      0: 'gap-0',\n      0.5: 'gap-0.5',\n      1: 'gap-1',\n      1.5: 'gap-1.5',\n      2: 'gap-2',\n      2.5: 'gap-2.5',\n      3: 'gap-3',\n      4: 'gap-4',\n      5: 'gap-5',\n      6: 'gap-6',\n      7: 'gap-7',\n      8: 'gap-8',\n      9: 'gap-9',\n      10: 'gap-10',\n      11: 'gap-11',\n      12: 'gap-12',\n    };\n    const alignMap: Record<'start' | 'center' | 'end', string> = {\n      start: 'items-start',\n      center: 'items-center',\n      end: 'items-end',\n    };\n    const justifyMap: Record<'start' | 'center' | 'end', string> = {\n      start: 'justify-start',\n      center: 'justify-center',\n      end: 'justify-end',\n    };\n    const wrapMap: Record<'true' | 'false', string> = {\n      true: 'flex-wrap',\n      false: 'flex-nowrap',\n    };\n    const classes = [\n      baseClass,\n      directionMap[this.direction()],\n      gapMap[this.gap()],\n      alignMap[this.align()],\n      justifyMap[this.justify()],\n      wrapMap[this.wrap() ? 'true' : 'false'],\n    ].filter(Boolean);\n    return classes.join(' ');\n  });\n}\n\nexport type StackGap = '0' | '0.5' | '1' | '1.5' | '2' | '2.5' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';\n",
+            "sourceCode": "import { Component, computed, input } from '@angular/core';\n\n@Component({\n  selector: 'ui-stack',\n  imports: [],\n  template: `\n    <div [class]=\"classes() + ' ' + cx()\">\n      <ng-content />\n    </div>\n  `,\n})\nexport class Stack {\n  direction = input<'column' | 'row'>('column');\n  gap = input<StackGap>('0');\n  align = input<'start' | 'center' | 'end'>('start');\n  justify = input<'start' | 'center' | 'end'>('start');\n  wrap = input<boolean>(false);\n  cx = input<string>('');\n\n  classes = computed(() => {\n    const baseClass = 'flex';\n    const directionMap: Record<'column' | 'row', string> = {\n      column: 'flex-col',\n      row: 'flex-row',\n    };\n    const gapMap: Record<StackGap, string> = {\n      0: 'gap-0',\n      0.5: 'gap-0.5',\n      1: 'gap-1',\n      1.5: 'gap-1.5',\n      2: 'gap-2',\n      2.5: 'gap-2.5',\n      3: 'gap-3',\n      4: 'gap-4',\n      5: 'gap-5',\n      6: 'gap-6',\n      7: 'gap-7',\n      8: 'gap-8',\n      9: 'gap-9',\n      10: 'gap-10',\n      11: 'gap-11',\n      12: 'gap-12',\n    };\n    const alignMap: Record<'start' | 'center' | 'end', string> = {\n      start: 'items-start',\n      center: 'items-center',\n      end: 'items-end',\n    };\n    const justifyMap: Record<'start' | 'center' | 'end', string> = {\n      start: 'justify-start',\n      center: 'justify-center',\n      end: 'justify-end',\n    };\n    const wrapMap: Record<'true' | 'false', string> = {\n      true: 'flex-wrap',\n      false: 'flex-nowrap',\n    };\n    const classes = [\n      baseClass,\n      directionMap[this.direction()],\n      gapMap[this.gap()],\n      alignMap[this.align()],\n      justifyMap[this.justify()],\n      wrapMap[this.wrap() ? 'true' : 'false'],\n    ].filter(Boolean);\n    return classes.join(' ');\n  });\n}\n\nexport type StackGap = '0' | '0.5' | '1' | '1.5' | '2' | '2.5' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -747,7 +1210,7 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "literal type",
-                "file": "projects/storybook/src/components/avatar/avatar-group.ts",
+                "file": "projects/storybook/src/components/avatar-group/avatar-group.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -849,13 +1312,13 @@
                     "kind": 193
                 }
             ],
-            "projects/storybook/src/components/avatar/avatar-group.ts": [
+            "projects/storybook/src/components/avatar-group/avatar-group.ts": [
                 {
                     "name": "AvatarGroupPerson",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "rawtype": "literal type",
-                    "file": "projects/storybook/src/components/avatar/avatar-group.ts",
+                    "file": "projects/storybook/src/components/avatar-group/avatar-group.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -959,16 +1422,16 @@
         "status": "low",
         "files": [
             {
-                "filePath": "projects/storybook/src/components/avatar/avatar-group.ts",
+                "filePath": "projects/storybook/src/components/avatar-group/avatar-group.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "AvatarGroup",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {
-                "filePath": "projects/storybook/src/components/avatar/avatar-group.ts",
+                "filePath": "projects/storybook/src/components/avatar-group/avatar-group.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
@@ -983,7 +1446,7 @@
                 "linktype": "component",
                 "name": "Avatar",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {
@@ -1033,6 +1496,33 @@
                 "name": "ButtonVariant",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/storybook/src/components/choicebox/checkbox/checkbox.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "Checkbox",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/storybook/src/components/choicebox/choicebox-group/choicebox-group.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ChoiceboxGroup",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/storybook/src/components/choicebox/choicebox/choicebox.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "Choicebox",
+                "coveragePercent": 0,
+                "coverageCount": "0/14",
                 "status": "low"
             },
             {
@@ -1089,7 +1579,7 @@
                 "linktype": "component",
                 "name": "Stack",
                 "coveragePercent": 0,
-                "coverageCount": "0/7",
+                "coverageCount": "0/8",
                 "status": "low"
             },
             {

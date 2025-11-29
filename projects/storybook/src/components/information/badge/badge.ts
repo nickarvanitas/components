@@ -30,20 +30,20 @@ export class Badge {
     };
     const colorMap: Record<'solid' | 'light', Record<BadgeColor, string>> = {
       solid: {
-        blue: 'bg-blue-500 text-white',
-        green: 'bg-green-500 text-white',
-        red: 'bg-red-500 text-white',
-        yellow: 'bg-yellow-500 text-white',
-        purple: 'bg-purple-500 text-white',
-        orange: 'bg-orange-500 text-white',
+        blue: 'bg-blue-600 text-white',
+        green: 'bg-green-600 text-white',
+        red: 'bg-red-600 text-white',
+        yellow: 'bg-yellow-600 text-white',
+        purple: 'bg-purple-600 text-white',
+        orange: 'bg-orange-600 text-white',
       },
       light: {
-        blue: 'bg-blue-50 text-blue-500',
-        green: 'bg-green-50 text-green-500',
-        red: 'bg-red-50 text-red-500',
-        yellow: 'bg-yellow-50 text-yellow-500',
-        purple: 'bg-purple-50 text-purple-500',
-        orange: 'bg-orange-50 text-orange-500',
+        blue: 'bg-blue-50 text-blue-600',
+        green: 'bg-green-50 text-green-600',
+        red: 'bg-red-50 text-red-600',
+        yellow: 'bg-yellow-50 text-yellow-600',
+        purple: 'bg-purple-50 text-purple-600',
+        orange: 'bg-orange-50 text-orange-600',
       },
     };
     const iconPosMap: Record<'left' | 'right', string> = {

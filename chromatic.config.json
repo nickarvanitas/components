@@ -1,0 +1,7 @@
+{
+  "onlyChanged": true,
+  "projectId": "Project:692895de242b5f0feef27271",
+  "storybookConfigDir": "projects/storybook/.storybook",
+  "zip": true,
+  "buildScriptName": "build"
+}

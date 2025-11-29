@@ -1,0 +1,9 @@
+import { Meta, Source } from '@storybook/addon-docs/blocks';
+import * as AvatarGroupStories from './avatar-group.stories';
+// @ts-ignore - raw-loader import
+import avatarGroupSource from '!!raw-loader!./avatar-group.ts';
+
+<Meta of={AvatarGroupStories} />
+ 
+<Source code={avatarGroupSource} language="typescript" />
+  
